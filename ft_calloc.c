@@ -13,15 +13,15 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_calloc(size_t count, size_t size)
+void	*calloc(size_t nmemb, size_t size)
 {
-	size_t	total;
-	void	*p;
+	void	*array;
 
-	total = count * size;
-	p = malloc (total);
-	if (!p)
+	if (nmemb && size && (nmemb * size >= 4294967295U))
+		return (0);
+	array = malloc(sizeof(nmemb * size));
+	if (!array)
 		return (NULL);
-	ft_bzero(p, total);
-	return (p);
+	ft_bzero(array, (nmemb * size));
+	return (array);
 }
